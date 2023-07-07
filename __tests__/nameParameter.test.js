@@ -16,6 +16,6 @@ describe('the request obj name parameter', () => {
         const res = await mockRequest.get(url);
         const match = url.match(regex);
         if (match) { const value = match[1]; return value };
-        expect(res._body).toEqual({ "name" : value })
+        expect(res._body).toEqual({ "name" : value });
     })
 })
