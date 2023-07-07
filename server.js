@@ -22,5 +22,4 @@ server.use('*', error404);
 
 server.use(error500);
 
-
 module.exports = {server, start};
