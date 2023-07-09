@@ -4,11 +4,15 @@ const logger = require('./middleware/logger.js');
 const validator = require('./middleware/validator.js');
 const error404 = require('./errorHandlers/404.js');
 const error500 = require('./errorHandlers/500.js');
-const server = require('express')();
+const express = require('express');
+const server = express();
 
 function start(port) {
     server.listen(port, console.log("I am listening on " + port))
 };
+
+//add express.json() for req.body, parses the JSON
+server.use(express.json());
 
 server.use(logger);
 
