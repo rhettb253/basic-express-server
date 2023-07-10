@@ -10,3 +10,6 @@ npm start
 
 ### Tests
 Unit Tests: npm test
+
+### Whiteboard
+<img src='./l3WB.png'>

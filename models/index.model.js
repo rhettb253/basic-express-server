@@ -2,17 +2,22 @@
 
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
-// const 7deadModel = require('./7dead.model.js');
-// const gameModel = require('./game.model.js');
+const sevDeadCharacter = require('./7dead.model.js'); 
+const coolGames = require('./game.model.js');
 
 const connectSequelizeToDb =
-  process.env.NODE_ENV === 'test' ? 'sqlite::memory:' : process.env.DATABASE_URI;
+  process.env.NODE_ENV === 'test' ? 'sqlite::memory:' : process.env.POSTGRESURI;
 
 //connect sequelize to my db
 const sequelizeConnect = new Sequelize(connectSequelizeToDb);
 
 //export connection instance
-module.exports = sequelizeConnect; 
+module.exports = {
+    sequelizeConnect, 
+    DataTypes,
+    SevDeadCharacter : sevDeadCharacter(sequelizeConnect, DataTypes),
+    CoolGames : coolGames(sequelizeConnect, DataTypes)
+}; 
 
 
 // const testDbConnection = async () => {
