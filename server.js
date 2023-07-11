@@ -7,7 +7,7 @@ const error500 = require('./errorHandlers/500.js');
 const express = require('express');
 const server = express();
 const coolGamesRoute = require('./routes/game.route.js');
-const sevDeadCharacterRoute = require('./routes/game.route.js');
+const sevDeadCharacterRoute = require('./routes/7dead.route.js');
 
 function start(port) {
     server.listen(port, console.log("I am listening on " + port))
