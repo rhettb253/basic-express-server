@@ -10,5 +10,3 @@ const PORT = process.env.PORT
 sequelizeConnect.sync()
     .then(()=> start(PORT))
     .catch(err=> console.error(err));
-
-start(PORT);

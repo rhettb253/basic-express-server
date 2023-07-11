@@ -1,7 +1,7 @@
 'use strict';
 
 const sevDeadCharacter = (connectSequelizeToDb, DataTypes) =>
-    connectSequelizeToDb.define('7DeadCharacter', {
+    connectSequelizeToDb.define('sevDeadCharacter', {
     name: {
         type: DataTypes.STRING,
         allowNull: false

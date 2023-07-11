@@ -5,14 +5,9 @@ const { SevDeadCharacter } = require('../models/index.model');
 
 const router = express.Router();
 
-router.get('/SevDeadCharacter', getSevDeadCharacters);
-router.get('/SevDeadCharacter/:id', getOneSevDeadCharacter);
-router.post('/SevDeadCharacter', createSevDeadCharacter);
-router.put('/SevDeadCharacter/:id', updateSevDeadCharacter);
-router.delete('/SevDeadCharacter/:id', deleteSevDeadCharacter);
+
 
 // all route handlers are async because we interact w database
-
 const getSevDeadCharacters = async (req, res) => {
     //search db and recieve all games
     let allGames = await SevDeadCharacter.findAll();
@@ -48,5 +43,11 @@ const deleteSevDeadCharacter = async (req, res) => {
     let deletedGame = await SevDeadCharacter.destroy({where : {id} });
     res.status(204).json(deletedGame);
 };
+
+router.get('/sevdead', getSevDeadCharacters);
+router.get('/sevdead/:id', getOneSevDeadCharacter);
+router.post('/sevdead', createSevDeadCharacter);
+router.put('/sevdead/:id', updateSevDeadCharacter);
+router.delete('/sevdead/:id', deleteSevDeadCharacter);
 
 module.exports = router;

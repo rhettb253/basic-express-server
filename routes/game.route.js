@@ -5,14 +5,7 @@ const { CoolGames } = require('../models/index.model');
 
 const router = express.Router();
 
-router.get('/coolgames', getCoolGames);
-router.get('/coolgames/:id', getOneCoolGame);
-router.post('/coolgames', createCoolGame);
-router.put('/coolgames/:id', updateCoolGame);
-router.delete('/coolgames/:id', deleteCoolGame);
-
 // all route handlers are async because we interact w database
-
 const getCoolGames = async (req, res) => {
     //search db and recieve all games
     let allGames = await CoolGames.findAll();
@@ -48,5 +41,11 @@ const deleteCoolGame = async (req, res) => {
     let deletedGame = await CoolGames.destroy({where : {id} });
     res.status(204).json(deletedGame);
 };
+
+router.get('/coolgames', getCoolGames);
+router.get('/coolgames/:id', getOneCoolGame);
+router.post('/coolgames', createCoolGame);
+router.put('/coolgames/:id', updateCoolGame);
+router.delete('/coolgames/:id', deleteCoolGame);
 
 module.exports = router;
