@@ -1,7 +1,7 @@
 'use strict';
 
-const sevDeadCharacter = (connectSequelizeToDb, DataTypes) =>
-    connectSequelizeToDb.define('sevDeadCharacter', {
+const gameCharacters = (connectSequelizeToDb, DataTypes) =>
+    connectSequelizeToDb.define('gameCharacters', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -12,4 +12,4 @@ const sevDeadCharacter = (connectSequelizeToDb, DataTypes) =>
     }
 });
 
-module.exports = sevDeadCharacter;
+module.exports = gameCharacters;
