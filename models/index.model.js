@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
-const sevDeadCharacter = require('./7dead.model.js'); 
+const gameCharacters = require('./characters.model.js'); 
 const coolGames = require('./game.model.js');
 
 const connectSequelizeToDb =
@@ -15,7 +15,7 @@ const sequelizeConnect = new Sequelize(connectSequelizeToDb);
 module.exports = {
     sequelizeConnect, 
     DataTypes,
-    SevDeadCharacter : sevDeadCharacter(sequelizeConnect, DataTypes),
+    GameCharacters : gameCharacters(sequelizeConnect, DataTypes),
     CoolGames : coolGames(sequelizeConnect, DataTypes)
 }; 
 
