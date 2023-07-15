@@ -17,5 +17,5 @@ describe('the request obj name parameter', () => {
         const match = url.match(regex);
         if (match) { const value = match[1]; return value };
         expect(res._body).toEqual({ "name" : value });
-    })
-})
+    });
+});

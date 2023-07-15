@@ -59,5 +59,18 @@ describe('databse interaction', ()=> {
         expect(res.body.id).toEqual(1);
       });
 
-    
+    it("can update a record", async ()=> {
+        const updateGame = {
+            title: "sonic",
+            type: "hedgehog racing",
+          };
+        const res = await mockRequest.put('/coolgames/1').send(updateGame);
+        expect(res.status).toBe(200);
+        expect(res.body.type).toEqual('hedgehog racing');
+    });
+
+    it('can delete a record', async ()=> {
+        const res = await mockRequest.delete('/coolgames/1');
+        expect(res.status).toBe(204);
+    });
 });
