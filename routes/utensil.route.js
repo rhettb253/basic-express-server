@@ -2,7 +2,7 @@
 
 const express = require('express');
 
-const { UtensilCollection} = require('../models/index.model.js');
+const { UtensilCollection, MealCollection} = require('../models/index.model.js');
 
 const router = express.Router();
 
@@ -10,8 +10,8 @@ const router = express.Router();
 router.get('/utensil', getUtensils);
 router.get('/utensil/:id', getOneUtensil);
 router.post('/utensil', createUtensil);
-router.put('/utensil/:id', updateUtensil);
-router.delete('/utensil/:id', deleteUtensil);
+// router.put('/utensil/:id', updateUtensil);
+// router.delete('/utensil/:id', deleteUtensil);
 
 //route handlers
 async function createUtensil(req,res) {
@@ -21,13 +21,15 @@ async function createUtensil(req,res) {
 }
 
 async function getUtensils(req,res) {
-    let allUtensils = await UtensilCollection.read();
+    let allUtensils = await UtensilCollection.read(null, {include: {model: MealCollection.model}});
     res.status(200).json(allUtensils);
 };
 
 async function getOneUtensil(req,res) {
     let id = req.params.id;
-    let allUtensils = await UtensilCollection.read(id);
+    let allUtensils = await UtensilCollection.read(id, {include: {model: MealCollection.model}});
+
     res.status(200).json(allUtensils);
 };
 
+module.exports = router;

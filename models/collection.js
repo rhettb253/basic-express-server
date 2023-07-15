@@ -20,14 +20,14 @@ class Collection {
   // READ 1 or all
   // anytime you have a function that takes arguments and you don't pass them in the function will treat them as though they eval to undefined
   // dogs.read()
-  async read(id) {
+  async read(id, options = {}) {
+
     let records = null; // if we get one record it will be an object, if we get many it will be an array
-    const options = {};
     try {
       if (id) {
         options.where = { id: id };
         records = await this.model.findOne(options);
-      } else records = await this.model.findAll();
+      } else records = await this.model.findAll(options);
       return records;
     } catch (e) {
       console.error(`error when reading data for model: ${this.model.name}`);
